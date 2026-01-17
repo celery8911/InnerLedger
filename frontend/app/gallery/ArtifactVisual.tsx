@@ -52,31 +52,33 @@ export function ArtifactVisual({
       <div
         className={`relative ${sizes.orbital} flex items-center justify-center`}
       >
-        <div
-          className={`absolute ${sizes.orbitalGlow} bg-[#00E5FF]/10 blur-[80px] rounded-full`}
-        />
-        <svg
-          className="w-full h-full transform scale-110 drop-shadow-[0_0_15px_rgba(0,255,230,0.5)]"
-          viewBox="0 0 200 200"
-        >
+        <div className="absolute inset-0 bg-primary/5 rounded-full blur-[40px]" />
+        <svg viewBox="0 0 200 200" className="w-full h-full artifact-glow opacity-80">
           <defs>
             <linearGradient id="ringGrad" x1="0%" x2="100%" y1="0%" y2="100%">
-              <stop offset="0%" stopColor="#00ffe6" stopOpacity="1" />
-              <stop offset="100%" stopColor="#009e8e" stopOpacity="0.3" />
+              <stop
+                offset="0%"
+                style={{ stopColor: '#00E5FF', stopOpacity: 1 }}
+              />
+              <stop
+                offset="100%"
+                style={{ stopColor: '#00E5FF', stopOpacity: 0.1 }}
+              />
             </linearGradient>
           </defs>
-          {[0, 25, 50, 75, 100, 125, 150].map((rot) => (
+          {[0, 30, 60, 90, 120, 150].map((rot) => (
             <ellipse
               key={rot}
-              className="opacity-80"
+              transform={`rotate(${rot} 100 100)`}
               cx="100"
               cy="100"
-              fill="none"
               rx="70"
               ry="25"
               stroke="url(#ringGrad)"
               strokeWidth="1"
-              transform={`rotate(${rot} 100 100)`}
+              fill="none"
+              className="animate-pulse"
+              style={{ animationDelay: `${rot * 10}ms` }}
             />
           ))}
           <circle cx="100" cy="100" fill="#fff" r="3" className="animate-pulse" />

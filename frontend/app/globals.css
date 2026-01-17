@@ -127,6 +127,10 @@ body {
   border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
 }
 
+.artifact-glow {
+  filter: drop-shadow(0 0 18px rgba(0, 229, 255, 0.45));
+}
+
 @keyframes subtle-breath {
   0% {
     transform: scale(1);
