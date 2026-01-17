@@ -15,6 +15,7 @@ import { encodeFunctionData } from 'viem';
 import type { Address, Hex, PublicClient } from 'viem';
 import { signTypedData, type Config } from '@wagmi/core';
 import { InnerLedgerABI } from './abis/InnerLedger';
+import { CONTRACTS } from './contracts/addresses';
 
 // ============ 类型定义 ============
 
@@ -54,12 +55,9 @@ const FORWARDER_TYPES = {
 } as const;
 
 // ============ 合约地址配置 ============
-// 从环境变量读取，部署后需要更新
-export const FORWARDER_ADDRESS = (process.env.NEXT_PUBLIC_FORWARDER_ADDRESS ||
-  '') as Address;
-export const INNER_LEDGER_ADDRESS = (process.env
-  .NEXT_PUBLIC_INNER_LEDGER_ADDRESS ||
-  '0x622a9E2c8E13B930C54D4263A00ee4BAC2930e3D') as Address;
+// 与前端读合约保持一致，避免默认地址不一致导致写/读错合约
+export const FORWARDER_ADDRESS = CONTRACTS.FORWARDER as Address;
+export const INNER_LEDGER_ADDRESS = CONTRACTS.INNER_LEDGER as Address;
 
 // Forwarder 合约的 nonces 函数 ABI
 const forwarderNonceAbi = [
@@ -132,7 +130,7 @@ export async function createForwardRequest(
     from: userAddress,
     to: INNER_LEDGER_ADDRESS,
     value: BigInt(0), // 不发送 ETH
-    gas: BigInt(300000), // 预估 Gas 限制
+    gas: BigInt(450000), // 预估 Gas 限制（含 SBT 铸造，留足余量）
     nonce,
     deadline,
     data,
