@@ -14,17 +14,36 @@ export function Typewriter({ text, speed = 50, onComplete }: TypewriterProps) {
 
   useEffect(() => {
     let i = 0;
-    const timer = setInterval(() => {
-      if (i < text.length) {
-        setDisplayedText((prev) => prev + text.charAt(i));
-        i++;
-      } else {
-        clearInterval(timer);
-        onComplete?.();
-      }
-    }, speed);
+    let timer: ReturnType<typeof setTimeout> | null = null;
 
-    return () => clearInterval(timer);
+    const tick = () => {
+      if (i < text.length) {
+        i += 1;
+        setDisplayedText(text.slice(0, i));
+        timer = setTimeout(tick, speed);
+        return;
+      }
+
+      onComplete?.();
+    };
+
+    if (text.length > 0) {
+      timer = setTimeout(() => {
+        setDisplayedText('');
+        tick();
+      }, 0);
+    } else {
+      timer = setTimeout(() => {
+        setDisplayedText('');
+        onComplete?.();
+      }, 0);
+    }
+
+    return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
   }, [text, speed, onComplete]);
 
   return (
