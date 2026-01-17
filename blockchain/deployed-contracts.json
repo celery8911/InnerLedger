@@ -1,0 +1,17 @@
+{
+  "network": "monadTestnet",
+  "chainId": 10143,
+  "rpc": "https://testnet-rpc.monad.xyz/",
+  "deployedAt": "2026-01-14T17:17:00+08:00",
+  "deployer": "0x7993576ae40996479fC549410cab4A9ee8Ae5AAf",
+  "contracts": {
+    "GrowthSBT": {
+      "address": "0x3c689A9800e1216CCEa4cC0D264D7A1422aCd0d1",
+      "description": "Soulbound Token for tracking user growth milestones"
+    },
+    "InnerLedger": {
+      "address": "0x622a9E2c8E13B930C54D4263A00ee4BAC2930e3D",
+      "description": "Main contract for emotional journaling and awareness tracking"
+    }
+  }
+}

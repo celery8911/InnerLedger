@@ -1,0 +1,25 @@
+specVersion: 1.0.0
+schema:
+  file: ./schema.graphql
+
+dataSources:
+  - kind: ethereum/contract
+    name: InnerLedger
+    network: monad-testnet
+    source:
+      address: "0x0379201C1014ece6FEc1bFE4E6371C484748406a"
+      abi: InnerLedger
+      startBlock: 6712090
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - RecordCreated
+      abis:
+        - name: InnerLedger
+          file: ./abis/InnerLedger.json
+      eventHandlers:
+        - event: RecordCreated(indexed address,bytes32,uint256)
+          handler: handleRecordCreated
+      file: ./src/mapping.ts

@@ -1,16 +1,29 @@
-# Subgraph
+Subgraph for InnerLedger
 
-The Graph indexer for InnerLedger.
+What it indexes
+- RecordCreated events from InnerLedger
+- Stores contentHash, user, timestamp, transactionHash, blockNumber
 
-## Setup
+Quick start (Graph CLI)
+1) Install tools
+   npm i -g @graphprotocol/graph-cli
 
-```bash
-npm install
-```
+2) Generate types
+   graph codegen subgraph.yaml
 
-## Development
+3) Build
+   graph build subgraph.yaml
 
-```bash
-graph codegen
-graph build
-```
+Deploy
+- Update the `network` field in subgraph.yaml to the network name required by your indexing provider.
+- Then deploy with your Graph Studio credentials.
+
+Query example
+{
+  recordCreateds(where: { contentHash: "0x..." }) {
+    contentHash
+    transactionHash
+    timestamp
+    user
+  }
+}
