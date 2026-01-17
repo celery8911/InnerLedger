@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Hardhat
+blockchain/cache/
+blockchain/artifacts/
+blockchain/typechain-types/
+
+# The Graph
+subgraph/build/
+subgraph/generated/
+
+# Frontend
+frontend/.next/
+frontend/out/
+frontend/dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Coverage
+coverage/
+coverage.json
