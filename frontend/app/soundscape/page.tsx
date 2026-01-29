@@ -277,14 +277,14 @@ export default function SoundscapePage() {
         }
       />
 
-      <main className="relative z-10 flex flex-1 flex-col justify-center gap-10 px-6 pb-8 pt-4">
+      <main className="relative z-10 flex flex-1 flex-col justify-center gap-6 px-6 pb-8 pt-4">
         <section className="relative w-full overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(82,122,119,0.35),_transparent_55%)]" />
           <div
-            className="relative h-[42vh] min-h-[240px] max-h-[420px] w-full bg-cover bg-center"
+            className="relative h-[50vh] min-h-[240px] max-h-[420px] w-full bg-cover bg-center"
             style={{
               backgroundImage:
-                "url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=80')",
+                "url('https://picsum.photos/800/1000?nature=1')",
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
