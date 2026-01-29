@@ -73,6 +73,13 @@ export default function Home() {
           >
             成长履历
           </Link>
+
+          <Link
+            href="/soundscape"
+            className="px-10 py-4 glass-pill text-white/70 rounded-full font-light hover:text-white hover:bg-white/10 transition-all tracking-[0.2em] uppercase text-sm"
+          >
+            沉浸音景
+          </Link>
         </div>
       </div>
     </main>
