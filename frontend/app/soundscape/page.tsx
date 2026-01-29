@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Header } from '@/components/Header';
-import { SoundscapeSlider } from '@/components/SoundscapeSlider';
+import { Slider } from '@/components/ui/slider';
 
 const SOUND_SOURCES = [
   {
@@ -323,9 +323,11 @@ export default function SoundscapePage() {
 
         <section className="flex items-end justify-around gap-6 px-2 pb-4 pt-2 min-h-[200px]">
           {sounds.map((sound) => (
-            <SoundscapeSlider
+            <Slider
               key={sound.id}
-              {...sound}
+              value={sound.volume}
+              label={sound.name}
+              icon={sound.icon}
               onChange={(value) => updateVolume(sound.id, value)}
             />
           ))}
